@@ -1,54 +1,26 @@
-# CSC 122 Types of Recursion
+# Recursion
 
-This repo demonstrates a number of different types of recursion that you might encounter out in the wild.
+This repository goes over some of the basics of recursion and demonstrates some of the different types of recursion that you might encounter.
 
-## Running the Examples
+## Building Executables With CMake Via the Terminal
 
-Currently, the Makefile is only set up to run the code using `g++`. You can run each example using:
+You can use [CMake][cmake] to compile and build the executables for the project. First, you need to create a `build/` directory in the project. The build directory will house all of the compiled files as well as the `Makefile` for the project. Note that we do NOT check the `build/` directory into version control since each person will have to regenerate the executables on their own machine.
 
 ```bash
-make 1
-make 2
-make 3
-make 4
-make 5
-make 6
-make 7
-make 8
+mkdir build
+cd build
 ```
 
-## Notes
+Once you are inside of the build directory, you can run the following command to build all of the executables for the project:
 
-Recursion can be broadly broken up into two categories - direct and indirect. Direct recursion is when a function calls itself whereas indirect recursion is when a function calls other functions which in turn eventually loop back to the original. These broad categories can be broken down further as described below.
+```bash
+cmake .. && make
+```
 
-### 1. Tail Recursion
+## Building Executables With CMake Via an IDE
 
-Tail recursion is a type of recursion where the recursive call is the last statement of the function.
+Many IDEs like [CLion][clion] and [Visual Studio][vs] have built-in support for CMake. You should be able to open the project and the IDE will automatically detect the `CMakeLists.txt` file. Then, the IDE will build all of the artifacts listed in the file.
 
-### 2. Head Recursion
-
-Head recursion is a type of recursion where the recursive call is located before the end of the function. Generally speaking, traditional `for` loops are easier to convert to tail recursion than to head recursion.
-
-### 3. Linear Recursion
-
-Linear recursion occurs when a function calls itself exactly one time in each recursive step.
-
-### 4. Tree Recursion
-
-Tree recursion occurs when a function calls itself two or more times in each recursive step.
-
-### 5. Nested Recursion
-
-This is "recursion inside recursion". In nested recursion, we pass a function call as a parameter to the recursive function.
-
-### 6. Indirect Recursion
-
-Indirect recursion occurs when a function calls another function, which in turn calls the first function again.
-
-### 7. Indirect Recursion (Example)
-
-It can be difficult to see why indirect recursion might be useful. This code demonstrates the [Collatz conjecture](https://en.wikipedia.org/wiki/Collatz_conjecture) and how indirect recursion could be used to solve it.
-
-### 8. Memoization
-
-Memoization is a technique to store calculated values while a function is recursing in order to speed up execution time and / or use fewer system resources.
+[clion]: https://www.jetbrains.com/clion/
+[cmake]: https://cmake.org/
+[vs]: https://visualstudio.microsoft.com/
